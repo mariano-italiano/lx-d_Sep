@@ -1,0 +1,174 @@
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+docker run hello-world
+id student
+sudo usermod -aG docker student
+id student
+docker ps 
+docker ps
+sudo systemctl status docker
+ls -la /var/lib/docker/
+sudo ls -la /var/lib/docker/
+docker run --help
+docker run hello-world
+docker ps
+docker ps -a 
+docker run --name my-helo hello-world
+docker ps -a 
+docker run -d httpd
+docker ps -a 
+docker ps 
+docker run
+it httpd /bin/bash
+docker run -it httpd bash
+docker ps -a
+docker ps --help
+docker ps -l
+docker pull nginx
+docker pull nginx:1.19.2
+docker run -d --name web1 nginx:1.19.2 
+docker ps -a
+docker ps 
+docker ps -l
+docker exec --help
+docker exec -it web1 ls -la
+docker exec -it web1 pwd; ls -la
+docker exec -it web1 hostname
+docker p
+docker exec -it web1 bash
+docker exec -it web1 uptime
+docker exec -it web1 /bin.bash
+docker exec -it web1 /bin/bash
+docker exec -it web1 /bin/sh
+docker search ubuntu
+docker pull ubuntu
+docker run ubuntu
+docker ps
+docker ps -a
+docker run -d --rm --name=ubuntu --entrypoint=tail ubuntu -f /dev/null 
+docker run -d --name ubuntu2 ubuntu 
+docker ps
+docker ps -a
+tail -f .viminfo 
+docker ps
+docker exec -it ubuntu bash
+docker exec -it web1 bash
+docker exec -it ubuntu bash
+docker attach web1
+history | grep web1
+history | grep ubuntu
+docker run --help | grep rm -A 10
+docker run -d --rm -it --name ubuntu2 ubuntu bash
+docker run -d --rm -it --name ubuntu3 ubuntu bash
+docker rm -f ubuntu3
+docker run --rm -it --name ubuntu3 ubuntu bash
+docker logs web1
+docker logs ubuntu
+docker ps
+docker stop boring_mahavira
+docker ps
+docker ps -a
+docker start web1
+docker ps -a
+docker ps 
+docker start boring_mahavira
+docker start cb19
+docker ps 
+docker ps  -a
+docker ps 
+docker ps 
+docker rm laughing_raman
+docker ps 
+docker pause boring_mahavira 
+docker ps 
+docker unpause boring_mahavira 
+docker ps 
+docker ps -a
+docker container prune 
+docker ps -a
+docker run --help
+docker run --restart=always --env appVersion=1.0 --name redis1 redis:7.0:alpine
+docker run --restart=always --env appVersion=1.0 --name redis1 redis:7.0-alpine
+docker ps -a
+docker rm redis1
+docker run -d --restart=always --env appVersion=1.0 --name redis1 redis:7.0-alpine
+docker exec -it redis1 env
+vi my-config
+docker run -d --restart=always --env-file my-config --name redis2 redis:7.0-alpine
+docker exec -it redis2 env
+docker ps
+docker inspect web1 
+curl http://172.17.0.2
+docker inspect redis1 | grep Env -A 10 
+docker inspect --help
+docker inspect --format '{{.State.Status}}' redis1
+docker inspect --format '{{.Config.Image}}' redis1
+docker inspect --format '{{.Config.Env}}' redis1
+docker inspect redis1 | grep Env -A 10 
+docker ps 
+docker rename ubuntu u22 
+docker ps 
+docker rm boring_mahavira 
+docker rm boring_mahavira -f 
+docker ps 
+curl http://google.com
+curl -s http://google.com
+curl -O https://gist.githubusercontent.com/ritaly/1d15b6c96c6bae86597684864ba85e6e/raw/96bfc801ec386de1ae9b331f9e87d97f0e452384/000-adr-template.md
+curl -s -O https://gist.githubusercontent.com/ritaly/1d15b6c96c6bae86597684864ba85e6e/raw/96bfc801ec386de1ae9b331f9e87d97f0e452384/000-adr-template.md
+curl -v http://google.com
+curl http://google.com
+docker top 
+docker container top 
+docker top web1
+docker top redis
+docker top redis1
+docker search ubuntu:18.04
+docker images
+docker ps
+docker image prune
+docker ps
+docker images
+docker ps -a
+docker rmi d2c94e258dcb
+docker images
+docker rmi [200~426f6fb54a1b~
+docker rmi 426f6fb54a1b
+docker run -d --name webserver -p 8080:80 nginx:alpine
+docker ps
+ip a 
+docker ps 
+docker exec -it webserver bash
+docker exec -it webserver sh
+vi index.html
+docker cp --help
+docker cp index.html webserver:/usr/share/nginx/html/index.html 
+docker commit -a "Marcin" -m "My custom website created by poor chat gpt" webserver 
+docker images
+docker tag 6adf77d47cc7 myweb:1.0
+docker images
+docker run -d --name myweb -p 9090:80 myweb:1.0 
+docker ps 
+sudo mkdir -p /etc/docker/certs.d/registry.lab.local
+vi /etc/docker/certs.d/registry.lab.local/ca.crt
+sudo vi /etc/docker/certs.d/registry.lab.local/ca.crt
+sudo systemctl restart docker
+sudo vi /etc/hosts
+docker login https://registry.lab.local
+docker push registry.lab.local/library/myweb:1.0
+docker tag myweb:1.0 registry.lab.local/library/myweb:1.0
+docker push registry.lab.local/library/myweb:1.0
+docker tag myweb:1.0 registry.lab.local/app1/myweb:1.0
+docker push registry.lab.local/app1/myweb:1.0
+history
+git config --global credential.helper store
+git clone https://github.com/mariano-italiano/lx-d_Sep.git
+cd lx-d_Sep/
+ls
+history| awk '$1 > 20' | cut -c 8- > day1-history.txt
