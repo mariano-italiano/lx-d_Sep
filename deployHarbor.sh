@@ -32,8 +32,9 @@ openssl x509 -req -extfile <(printf "subjectAltName=DNS:registry.lab.local,DNS:w
 cp harbor.yml.tmpl harbor.yml
 
 # update certs and hostname
-sed 's/hostname: reg.mydomain.com/hostname: registry.lab.local/' harbor.yml
-sed 's|certificate: /your/certificate/path|/opt/harbor/server.crt|' harbor.yml
-sed 's|private_key: /your/private/key/path|/opt/harbor/server.key|' harbor.yml
+sed -i 's/hostname: reg.mydomain.com/hostname: registry.lab.local/' harbor.yml
+sed -i 's|certificate: /your/certificate/path|certificate: /opt/harbor/server.crt|' harbor.yml
+sed -i 's|private_key: /your/private/key/path|private_key: /opt/harbor/server.key|' harbor.yml
 
-./install.sh
+# start docker Harbor application
+#./install.sh
